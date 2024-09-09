@@ -4,7 +4,9 @@ to identify underperforming regions and product categories. The goal is to incre
 # Dataset 
 The dataset was acquired from from kaggle, it has 14 columns and 2500 rows that consist of
 
-ID, Order ID, ship Date, Shipping Method, Category, Sub-Category, Country,Region, State, Postal Code, Product Name, Customer, Quantity, Shipping cost
+ID, Order ID, ship Date, Shipping Method, Category, Sub-Category, Country, Region, 
+
+State, Postal Code, Product Name, Customer, Quantity, Shipping cost
 
 ### Data Cleaning:
 The dataset was first reviewed in excel  to identify any missing or irrelevant data points.
@@ -15,17 +17,17 @@ Another column was added to calculate the Profit Per Unit, which helps to measur
 After preparing and cleaning the dataset in Excel, the cleaned data was exported and loaded into R for detailed analysis.  This involved further breakdowns by region and category to determine high and low-margin products and perform scenario-based projections, such as determining the impact of increasing high-margin product sales on total profit.
 
 ### Key Variables:
->1.Region: The region where the sales occurred.
+- Region: The region where the sales occurred.
 
->2.Category: The product category (e.g., Furniture, Office Supplies, etc.).
+- Category: The product category (e.g., Furniture, Office Supplies, etc.).
 
->3.Product Name: The name of the product sold.
+- Product Name: The name of the product sold.
 
->4.Quantity: The number of units sold for the respective product.
+- Quantity: The number of units sold for the respective product.
 
->5.Profit Margin: The percentage of profit relative to the sales for each product.
+- Profit Margin: The percentage of profit relative to the sales for each product.
 
->6.Profit Per Unit: The amount of profit earned per unit sold. 
+- Profit Per Unit: The amount of profit earned per unit sold. 
 
 I prefer excel/power Bi for data cleaning because this method provides me with a clear view of the tables, cleaning and aggregate functions  can also be performed in SQL using the following queries:
 
@@ -49,15 +51,16 @@ The data also  does not include information on Promotional Offers or Discounts. 
 ### Load necessary libraries
 These libraries are used for data manipulation, visualization, and rendering tables in the analysis.
 
->For data manipulation- [dplyr](https://dplyr.tidyverse.org/)
 
->For data visualization- [ggplot2](https://ggplot2.tidyverse.org/)
+- For data manipulation- [dplyr](https://dplyr.tidyverse.org/)
+          
+- For data visualization- [ggplot2](https://ggplot2.tidyverse.org/)
 
->For reading CSV files- [readr](https://readr.tidyverse.org/)
+- For reading CSV files- [readr](https://readr.tidyverse.org/)
 
->For rendering markdown tables- [knitr](https://yihui.org/knitr/)
+ - For rendering markdown tables- [knitr](https://yihui.org/knitr/)
 
->For data cleaning and reshaping- [tidyr](https://tidyr.tidyverse.org/)
+- For data cleaning and reshaping- [tidyr](https://tidyr.tidyverse.org/)
 
 # Analysis
 ###  Load the data 
@@ -68,7 +71,7 @@ These libraries are used for data manipulation, visualization, and rendering tab
 
 ### 1. High-Margin Products Analysis:
 The first step of the analysis involved determining the number of high-margin products (those with a profit margin above 38%) that need to be sold in each category and region to achieve a 10% increase in total profit.
-###  Filter products with a profit margin greater than 38%
+Filter products with a profit margin greater than 38%
 
       high_margin_products <- Profits[Profits$profit.margin > 38, ]
 
@@ -81,7 +84,7 @@ The first step of the analysis involved determining the number of high-margin pr
        colnames(current_profit)[3] <- "Total_Profit"
  
 
-### Calculate the total current profit
+**Calculate the total current profit**
 
       total_current_profit <- sum(current_profit$Total_Profit)
 
